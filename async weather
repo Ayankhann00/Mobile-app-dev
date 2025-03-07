@@ -1,0 +1,26 @@
+import 'dart:async';
+
+// Function to simulate fetching weather data from an API
+Future<String> fetchWeatherData() async {
+  print("Fetching weather data...");
+  await Future.delayed(Duration(seconds: 3)); // Simulate network delay
+
+  // Simulating success or failure
+  bool success = DateTime.now().second % 2 == 0; // Randomly fail sometimes
+
+  if (success) {
+    return "Weather: Sunny, 25°C";
+  } else {
+    throw Exception("Failed to fetch weather data");
+  }
+}
+
+void main() async {
+  try {
+    String weather = await fetchWeatherData(); // Fetch data asynchronously
+    print("Weather Data Received: $weather");
+  } catch (e) {
+    print("Error: $e"); // Handle errors
+  }
+}
+
